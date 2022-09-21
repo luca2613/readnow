@@ -46,7 +46,7 @@ cd_autor int not null,
 nm_livro varchar(150) not null,
 ds_livro text not null,
 dt_lancamento date not null,
-vl_livro decimal(10,2) not null,
+vl_livro decimal(10,2),
 cd_img_livro longtext not null,
 CONSTRAINT pk_livro PRIMARY KEY(cd_livro),
 CONSTRAINT fk_livro_autor FOREIGN KEY livro(cd_autor) REFERENCES autor(cd_autor)
@@ -78,10 +78,12 @@ CONSTRAINT fk_favorito_usuario FOREIGN KEY favorito(cd_usuario) REFERENCES usuar
 INSERT INTO CATEGORIA VALUES 
 (DEFAULT, "Ação"),
 (DEFAULT, "Aventura"),
-(DEFAULT, "Romance"),
-(DEFAULT, "Terror"),
 (DEFAULT, "Fantasia"),
 (DEFAULT, "Ficção"),
-(DEFAULT, "Suspense");
+(DEFAULT, "Romance"),
+(DEFAULT, "Suspense"),
+(DEFAULT, "Terror");
+
+
 
 select * from categoria

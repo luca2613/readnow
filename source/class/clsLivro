@@ -58,16 +58,17 @@ class clsLivro extends clsBanco
 		$this->vl_livro = $vl_livro;
 	}
 
-	public function __construct($conexao) {
-		$this->conexao = $conexao;
-	}
-
 	public function get_cd_img_livro() {
 		return $this->cd_img_livro;
 	}
 	
     public function set_cd_img_livro($cd_img_livro) {
 		$this->cd_img_livro = $cd_img_livro;
+	}
+
+	public function __construct($conexao)
+	{
+		$this->conexao = $conexao;
 	}
 
 	public function selectLivro() {
