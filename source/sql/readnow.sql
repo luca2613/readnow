@@ -27,6 +27,7 @@ cd_tipo_usuario int not null,
 nm_autor varchar (80) not null,
 nm_senha_autor varchar(80) not null,
 nm_email_autor varchar(150) not null,
+cd_img_autor longtext not null,
 CONSTRAINT pk_autor PRIMARY KEY(cd_autor),
 CONSTRAINT fk_autor_tipo_usuario FOREIGN KEY autor(cd_tipo_usuario) REFERENCES tipo_usuario(cd_tipo_usuario)
 );
@@ -46,9 +47,13 @@ nm_livro varchar(150) not null,
 ds_livro text not null,
 dt_lancamento date not null,
 vl_livro decimal(10,2) not null,
+cd_img_livro longtext not null,
 CONSTRAINT pk_livro PRIMARY KEY(cd_livro),
 CONSTRAINT fk_livro_autor FOREIGN KEY livro(cd_autor) REFERENCES autor(cd_autor)
 );
+
+
+
 
 CREATE TABLE IF NOT EXISTS livroCategoria
 (
@@ -60,4 +65,23 @@ CONSTRAINT fk_livroCategoria FOREIGN KEY livroCategoria(cd_livro) REFERENCES liv
 CONSTRAINT fk_categoriaLivro FOREIGN KEY livroCategoria(cd_categoria) REFERENCES categoria(cd_categoria)
 );
 
-desc livro;
+CREATE TABLE IF NOT EXISTS favorito
+(
+cd_favorito int not null auto_increment,
+cd_livro int not null,
+cd_usuario int not null,
+CONSTRAINT pk_favorito PRIMARY KEY(cd_favorito),
+CONSTRAINT fk_favorito_livro FOREIGN KEY favorito(cd_livro) REFERENCES livro(cd_livro),
+CONSTRAINT fk_favorito_usuario FOREIGN KEY favorito(cd_usuario) REFERENCES usuario(cd_usuario)
+);
+
+INSERT INTO CATEGORIA VALUES 
+(DEFAULT, "Ação"),
+(DEFAULT, "Aventura"),
+(DEFAULT, "Romance"),
+(DEFAULT, "Terror"),
+(DEFAULT, "Fantasia"),
+(DEFAULT, "Ficção"),
+(DEFAULT, "Suspense");
+
+select * from categoria

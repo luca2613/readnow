@@ -2,82 +2,33 @@
 class clsLivro extends clsBanco
 {
 	private $conexao;
-	private $cd_livro;
-    private $cd_autor;
-	private $nm_livro;
-	private $ds_livro;
-	private $dt_lancamento;
-	private $vl_livro;
-	private $cd_img_livro;
+	private $cd_categoria;
+	private $nm_categoria;
 
-	public function get_cd_livro() {
-		return $this->cd_livro;
+	public function get_cd_categoria() {
+		return $this->cd_categoria;
 	}
 	
-    public function set_cd_livro($cd_livro) {
-		$this->cd_livro = $cd_livro;
+    public function set_cd_categoria($cd_categoria) {
+		$this->cd_categoria = $cd_categoria;
 	}
 
-    public function get_cd_autor() {
-		return $this->cd_autor;
+	public function get_nm_categoria() {
+		return $this->nm_categoria;
 	}
 	
-    public function set_cd_autor($cd_autor) {
-		$this->cd_autor = $cd_autor;
+    public function set_nm_categoria($nm_categoria) {
+		$this->nm_categoria = $nm_categoria;
 	}
 
-    public function get_nm_livro() {
-		return $this->nm_livro;
-	}
-	
-    public function set_nm_livro($nm_livro) {
-		$this->nm_livro = $nm_livro;
-	}
-
-    public function get_ds_livro() {
-		return $this->ds_livro;
-	}
-	
-    public function set_ds_livro($ds_livro) {
-		$this->ds_livro = $ds_livro;
-	}
-
-    public function get_dt_lancamento() {
-		return $this->dt_lancamento;
-	}
-	
-    public function set_dt_lancamento($dt_lancamento) {
-		$this->dt_lancamento = $dt_lancamento;
-	}
-
-    public function get_vl_livro() {
-		return $this->vl_livro;
-	}
-	
-    public function set_vl_livro($vl_livro) {
-		$this->vl_livro = $vl_livro;
-	}
-
-	public function __construct($conexao) {
-		$this->conexao = $conexao;
-	}
-
-	public function get_cd_img_livro() {
-		return $this->cd_img_livro;
-	}
-	
-    public function set_cd_img_livro($cd_img_livro) {
-		$this->cd_img_livro = $cd_img_livro;
-	}
-
-	public function selectLivro() {
+	public function MenuCategoria() {
 		$banco = $this->conexao->getBanco();
-		$comando = "select * from livro";
+		$comando = "select * from categoria";
 		$resultado = $banco->query($comando);
 		$texto = "";
 		if($resultado->num_rows > 0) {
 			while($row = $resultado->fetch_assoc()) {
-                $texto .= "<span>" . $row["nm_livro"] . "</span>";
+                $texto .= "<li id='".$row["cd_categoria"]."'><a>" . $row["nm_categoria"] . "</a></li>";
 			}
 			return $texto;
 		}
