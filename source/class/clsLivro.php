@@ -88,12 +88,23 @@ class clsLivro extends clsBanco
 
     public function selectLivroLast() {
         $banco = $this->conexao->getBanco();
-		$comando = "select * from livro order by dt_lancamento desc limit 3";
+		$comando = "select nm_autor,cd_livro,cd_img_livro,nm_livro,dt_lancamento ";
+		$comando .= "from livro join autor on livro.cd_autor = autor.cd_autor ";
+		$comando .= "order by dt_lancamento desc limit 4;";
 		$resultado = $banco->query($comando);
 		$texto = "";
+		
 		if($resultado->num_rows > 0) {
 			while($row = $resultado->fetch_assoc()) {
-                $texto .= "<span>" . $row["nm_livro"] . "</span>";
+				$caminhoImg = "../assets/images/" . $row["cd_img_livro"];
+                $texto .= "<div class='livro'>";
+				$texto.= "<img src='".$caminhoImg."' class='class-item-img' alt='capa do livro ".$row["nm_livro"]."'>";
+				$texto .= "<div class='tituloLivro'><span>"; 
+				$texto .= "<a href='#'>".$row["nm_livro"]."</a>";
+				$texto .= "</span></div>";
+				$texto .= "<div class='tituloLivro'><span>"; 
+				$texto .= "<a href='#'>".$row["nm_autor"]."</a>";
+				$texto .= "</span></div></div>";
 			}
 			return $texto;
 		}

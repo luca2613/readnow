@@ -5,6 +5,7 @@
             <div class="containerBusca">
                 <form>
                     <input type="text" id="busca" name="busca" placeholder="Busque por um título ou autor">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
             </div>
         </div>
@@ -14,6 +15,7 @@
 
     <section class="barraCategoria">
         <ul>
+            <li id="0"><a href="#">Todos</a></li>
             <?php  
             $categoria = new clsCategoria($classe_banco);
             echo $categoria->menuCategoria();

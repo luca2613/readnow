@@ -33,7 +33,7 @@ class clsCategoria extends clsBanco
 		$texto = "";
 		if($resultado->num_rows > 0) {
 			while($row = $resultado->fetch_assoc()) {
-                $texto .= "<li id='".$row["cd_categoria"]."'><a>" . $row["nm_categoria"] . "</a></li>";
+                $texto .= "<li id='".$row["cd_categoria"]."'><a href='#'>" . $row["nm_categoria"] . "</a></li>";
 			}
 			return $texto;
 		}

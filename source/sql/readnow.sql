@@ -1,4 +1,4 @@
-DROP DATABASE readnow;
+DROP DATABASE IF EXISTS readnow;
 CREATE DATABASE IF NOT EXISTS readnow;
 USE readnow;
 
@@ -20,7 +20,7 @@ CONSTRAINT pk_usuario PRIMARY KEY(cd_usuario),
 CONSTRAINT fk_usuario_tipo_usuario FOREIGN KEY usuario(cd_tipo_usuario) REFERENCES tipo_usuario(cd_tipo_usuario)
 );
 
-CREATE TABLE IF NOT EXISTS AUTOR
+CREATE TABLE IF NOT EXISTS autor
 (
 cd_autor int not null auto_increment,
 cd_tipo_usuario int not null,
@@ -84,6 +84,34 @@ INSERT INTO CATEGORIA VALUES
 (DEFAULT, "Suspense"),
 (DEFAULT, "Terror");
 
+insert into tipo_usuario values
+(default, 'adm'),
+(default, 'autor'),
+(default, 'cliente');
 
+insert into autor values
+(default,2,'autor1','123','autor@gmail.com', 'img');
 
-select * from categoria
+insert into autor values
+(default,2,'autor2','123','autor2@gmail.com', 'img');
+
+desc livro;
+
+select * from autor;
+
+insert into livro values
+(default, 1, "Harry Potter e o prisioneiro de azkaban", "ivro harry potter...", '2022-09-21',10.90,'livro1.jpg');
+
+insert into livro values
+(default, 2, "Jogos Vorazes", "ivro harry potter...", '2022-09-24',10.90,'livro2.jpg');
+
+insert into livro values
+(default, 2, "Anne de Green Gables", "ivro harry potter...", '2022-09-23',10.90,'livro3.jpg');
+
+insert into livro values
+(default, 1, "O labirinto do fauno", "ivro harry potter...", '2022-09-22',10.90,'livro4.jpg');
+
+select nm_autor,cd_livro,cd_img_livro,nm_livro,dt_lancamento from livro join autor on livro.cd_autor = autor.cd_autor order by dt_lancamento desc limit 4;
+
+select * from livro order by dt_lancamento desc limit 3;
+

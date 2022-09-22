@@ -16,17 +16,47 @@
 .doubleContainer {
     display: flex;
     align-items: center;
+    width: 60%;
+}
+
+.containerBusca {
+    flex: 4;
+}
+
+.containerLogo {
+    flex: 1;
+    color: white;
+    display: flex;
+    justify-content: center;
 }
 
 #busca {
-    padding: 11px 10px;
     flex: 2;
     border: none;
-    border-radius: 10px 0 0 10px;
     font-size: 16px;
     background-color: white;
     width: 100%;
-    margin: 10px;
+    margin: 10px 0 10px 10px;
+    height: 40px;
+    outline: 0;
+    padding: 0 10px 0 10px;
+    box-shadow: none;
+}
+
+.containerBusca form {
+    display: flex;
+    align-items: center;
+}
+
+.containerBusca button {
+    height: 40px;
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+    background-color: white;
+    color: #161616;
+    border: none;
+    outline: 0;
+    cursor: pointer;
 }
 
 .barraCategoria {
@@ -50,4 +80,5 @@
     color: white;
     cursor: pointer;
     background-color:black;
+    text-decoration: none;
 }

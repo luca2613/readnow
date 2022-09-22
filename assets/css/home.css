@@ -6,3 +6,24 @@ h1 {
 main {
     margin: 20px;
 }
+
+.containerLivros {
+    display: flex;
+    width: 100%;
+}
+
+.livro {
+    width: calc(100% / 4);
+    max-width: 250px;
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+}
+
+.class-item-img {
+    width: 100%;
+    height: 320px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
