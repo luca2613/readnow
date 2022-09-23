@@ -10,6 +10,7 @@ main {
 .containerLivros {
     display: flex;
     width: 100%;
+    justify-content: center;
 }
 
 .livro {
@@ -26,4 +27,21 @@ main {
     background-size: contain;
     background-repeat: no-repeat;
 
+}
+
+.tituloLivro {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tituloLivro a{
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.autorLivro a{
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
 }

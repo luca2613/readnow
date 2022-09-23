@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="contaierPerfil">Olá, Luca</div>
+        <div class="containerPerfil"><i class="fa-solid fa-circle-user"></i><span>Olá, Luca</span></div>
     </section>
 
     <section class="barraCategoria">

@@ -25,9 +25,10 @@ CREATE TABLE IF NOT EXISTS autor
 cd_autor int not null auto_increment,
 cd_tipo_usuario int not null,
 nm_autor varchar (80) not null,
+ds_autor text,
 nm_senha_autor varchar(80) not null,
 nm_email_autor varchar(150) not null,
-cd_img_autor longtext not null,
+cd_img_autor longtext,
 CONSTRAINT pk_autor PRIMARY KEY(cd_autor),
 CONSTRAINT fk_autor_tipo_usuario FOREIGN KEY autor(cd_tipo_usuario) REFERENCES tipo_usuario(cd_tipo_usuario)
 );
@@ -42,6 +43,7 @@ CONSTRAINT pk_categoria PRIMARY KEY(cd_categoria)
 CREATE TABLE IF NOT EXISTS livro
 (
 cd_livro int not null auto_increment,
+cd_categoria int not null,
 cd_autor int not null,
 nm_livro varchar(150) not null,
 ds_livro text not null,
@@ -49,21 +51,13 @@ dt_lancamento date not null,
 vl_livro decimal(10,2),
 cd_img_livro longtext not null,
 CONSTRAINT pk_livro PRIMARY KEY(cd_livro),
-CONSTRAINT fk_livro_autor FOREIGN KEY livro(cd_autor) REFERENCES autor(cd_autor)
+CONSTRAINT fk_livro_autor FOREIGN KEY livro(cd_autor) REFERENCES autor(cd_autor),
+CONSTRAINT fk_livro_categoria FOREIGN KEY livro(cd_categoria) REFERENCES categoria(cd_categoria)
 );
 
 
 
 
-CREATE TABLE IF NOT EXISTS livroCategoria
-(
-cd_livro_categoria int not null auto_increment,
-cd_livro int not null,
-cd_categoria int not null,
-CONSTRAINT pk_livroCategoria PRIMARY KEY(cd_livro_categoria),
-CONSTRAINT fk_livroCategoria FOREIGN KEY livroCategoria(cd_livro) REFERENCES livro(cd_livro),
-CONSTRAINT fk_categoriaLivro FOREIGN KEY livroCategoria(cd_categoria) REFERENCES categoria(cd_categoria)
-);
 
 CREATE TABLE IF NOT EXISTS favorito
 (
@@ -90,26 +84,31 @@ insert into tipo_usuario values
 (default, 'cliente');
 
 insert into autor values
-(default,2,'autor1','123','autor@gmail.com', 'img');
+(default,2,'autor1','autor 1, nascido em tal',md5('123'),'autor@gmail.com', 'img');
+
+insert into usuario values
+(default,3,'usuario', md5('123'),'usuario@gmail.com');
 
 insert into autor values
-(default,2,'autor2','123','autor2@gmail.com', 'img');
+(default,2,'autor2','autor 1, nascido em tal',md5('123'),'autor2@gmail.com', 'img');
 
-desc livro;
+desc usuario;
 
 select * from autor;
 
-insert into livro values
-(default, 1, "Harry Potter e o prisioneiro de azkaban", "ivro harry potter...", '2022-09-21',10.90,'livro1.jpg');
+SELECT * FROM autor where nm_email_autor = "autor@gmail.com" and nm_senha_autor = md5("123");
 
 insert into livro values
-(default, 2, "Jogos Vorazes", "ivro harry potter...", '2022-09-24',10.90,'livro2.jpg');
+(default, 1, 1, "Harry Potter e o prisioneiro de azkaban", "ivro harry potter...", '2022-09-21',10.90,'livro1.jpg');
 
 insert into livro values
-(default, 2, "Anne de Green Gables", "ivro harry potter...", '2022-09-23',10.90,'livro3.jpg');
+(default,2,  2, "Jogos Vorazes", "ivro harry potter...", '2022-09-24',10.90,'livro2.jpg');
 
 insert into livro values
-(default, 1, "O labirinto do fauno", "ivro harry potter...", '2022-09-22',10.90,'livro4.jpg');
+(default,3, 2, "Anne de Green Gables", "ivro harry potter...", '2022-09-23',10.90,'livro3.jpg');
+
+insert into livro values
+(default,4, 1, "O labirinto do fauno", "ivro harry potter...", '2022-09-22',10.90,'livro4.jpg');
 
 select nm_autor,cd_livro,cd_img_livro,nm_livro,dt_lancamento from livro join autor on livro.cd_autor = autor.cd_autor order by dt_lancamento desc limit 4;
 

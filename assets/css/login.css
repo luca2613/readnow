@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Calibri';
+}
+
+.containerLogin {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items:center;
+    justify-content: center;
+    /* background-color: #161616; */
+    height: 100vh;
+}
+
+.formLogin {
+    min-width: 450px;
+}
+
+.boxFormLogin {
+    display: flex;
+    flex-direction: column;
+    
+    /* background-color: black; */
+}
+
+.boxFormLogin input {
+    height: 40px;
+    padding: 5px;
+    outline: 0;
+}
+
+.bloco_email {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.bloco_senha {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bloco_botao input {
+    font-size: 1.3rem;
+    padding: 5px;
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.bloco_criarConta, .bloco_resposta {
+    display: flex;
+    justify-content: center;
+}

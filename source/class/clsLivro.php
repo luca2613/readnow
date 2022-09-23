@@ -102,7 +102,7 @@ class clsLivro extends clsBanco
 				$texto .= "<div class='tituloLivro'><span>"; 
 				$texto .= "<a href='#'>".$row["nm_livro"]."</a>";
 				$texto .= "</span></div>";
-				$texto .= "<div class='tituloLivro'><span>"; 
+				$texto .= "<div class='autorLivro'><span>"; 
 				$texto .= "<a href='#'>".$row["nm_autor"]."</a>";
 				$texto .= "</span></div></div>";
 			}
