@@ -4,18 +4,12 @@ require_once "../../config/session.php";
 
 $livro = new clsLivro($classe_banco);
 
-
-
-
-
 if(isset($_POST["nm_livro"])) {
 	if(!empty($_POST["nm_livro"])) {
 		$nm_livro = $_POST["nm_livro"];
 		
 	}
 }
-
-
 
 if(isset($_POST["ds_livro"])) {
 	if(!empty($_POST["ds_livro"])) {
@@ -36,13 +30,6 @@ if(isset($_POST["nm_categoria"])) {
 		
 	}
 }
-
-
-echo "nome:" . $nm_livro;
-echo "<br>cd:".$cd_usuario;
-echo "<br>categoria:".$nm_categoria;
-echo "<br>descricao: ".$ds_livro;
-		
 
 
 if (isset($_FILES['upfile'])) {

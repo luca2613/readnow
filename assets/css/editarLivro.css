@@ -1,0 +1,181 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: calc(100% - 250px);
+    position: absolute;
+    right: 0;
+}
+
+.tituloPagina h1 {
+    color: #161616;
+}
+
+#formulario {
+    /* display: none; */
+}
+
+.geral {
+    display: flex;
+}
+
+.topo2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.tituloPagina {
+    margin-left: 20px;
+    font-size: 1.3rem;
+    color: #161616;
+}
+
+.btnCadastro {
+    display: flex;
+    justify-content: end;
+    margin-right: 30px
+}
+
+.topo2 button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #161616;
+    color: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+    width: 160px;
+    align-self: end;
+}
+
+.base{
+    background-color: #161616;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 25px;
+}
+
+.base label{
+    color: white;
+    font-size: 1em;
+    margin-top: 24px;
+}
+
+.base textarea {
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.base input, select{
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.btn_confirmar{
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white;
+    color: #161616;
+    border-radius: 10px;
+    border: none;
+    margin-top: 30px;
+    width: 160px;
+    align-self: end;
+}
+
+.topo2 button i {
+    margin-right: 5px;
+}
+
+.df{
+    display: flex;
+}
+
+.dc{
+    flex-direction: column;
+}
+
+.jst{
+    justify-content: space-evenly;
+}
+
+.width2{
+    width: 55%;
+}
+
+.width1{
+    width: 35%;
+}
+
+
+/*input file*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.input-file-upload {
+    display: flex;
+    flex-direction: column;
+    width: 70%
+}
+
+.upload-btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    width: 100%;
+    font-size: 19px;
+    font-weight: 700;
+    color: #161616;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+
+}
+
+.upload-btn input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.upload_img {
+    display: inline-block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    vertical-align: middle;
+    margin-top: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 1.8rem;
+}
+
+main {
+    margin: 20px;
+}
+
+

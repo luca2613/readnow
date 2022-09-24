@@ -1,5 +1,9 @@
-<?php require_once '../config/config.php';?>
-<?php require_once '../config/session.php';?>
+<?php require_once '../config/config.php';
+$classe_banco = new clsBanco();
+$classe_banco->Conectar();
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">

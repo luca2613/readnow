@@ -93,10 +93,10 @@ insert into autor values
 (default,2,'autor2','autor 1, nascido em tal',md5('123'),'autor2@gmail.com', 'img');
 
 insert into livro values
-(default, 1, 1, "Harry Potter e o prisioneiro de azkaban", "ivro harry potter...", '2022-09-21',10.90,'livro1.jpg');
+(default, 1, 1, "Harry Potter e o prisioneiro de azkaban", "ivro harry potter...", '2022-09-30',10.90,'livro1.jpg');
 
 insert into livro values
-(default,2,  2, "Jogos Vorazes", "ivro harry potter...", '2022-09-24',10.90,'livro2.jpg');
+(default,2,  2, "Jogos Vorazes", "ivro harry potter...", '2022-09-29',10.90,'livro2.jpg');
 
 insert into livro values
 (default,3, 2, "Anne de Green Gables", "ivro harry potter...", '2022-09-23',10.90,'livro3.jpg');
@@ -104,8 +104,13 @@ insert into livro values
 insert into livro values
 (default,4, 1, "O labirinto do fauno", "ivro harry potter...", '2022-09-22',10.90,'livro4.jpg');
 
+insert into livro values
+(default,4, 1, "autor 1", "pao de que", '2022-09-22',10.90,'livro4.jpg');
+
 insert into livro(cd_livro,cd_categoria,cd_autor,nm_livro,ds_livro,dt_lancamento,cd_img_livro) values
 (default,4, 1, "O labirinto do fauno2", "ivro harry potter...2", '2022-09-12','livro4.jpg');
+
+
 
 
 

@@ -124,7 +124,7 @@ class clsAutor extends clsBanco
             $texto .= "<div class='listaMenu'>";
             $texto .= "<ul>";
             $texto .= "<li>";
-            $texto .= "<a href='#'><i class='fa-solid fa-book'></i>Meus livros</a>";
+            $texto .= "<a href='homeAutor.php'><i class='fa-solid fa-book'></i>Meus livros</a>";
             $texto .="</li>";
         	$texto .= "<li>";
             $texto .= "<a href='#'><i class='fa-solid fa-user'></i>Minha conta</a>";

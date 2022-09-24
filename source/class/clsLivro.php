@@ -120,6 +120,31 @@ class clsLivro extends clsBanco
 		$this->conexao->Desconectar();
     }
 
+	public function selectLivroByBusca($campo) {
+        $banco = $this->conexao->getBanco();
+		$comando = "SELECT nm_autor,cd_livro,cd_img_livro,nm_livro,dt_lancamento FROM ";
+		$comando .= "livro join autor on livro.cd_autor = autor.cd_autor where ";
+		$comando .= "nm_autor like '%$campo%' or nm_livro like '%$campo%';";
+		$resultado = $banco->query($comando);
+		$texto = "";
+		
+		if($resultado->num_rows > 0) {
+			while($row = $resultado->fetch_assoc()) {
+				$caminhoImg = "../assets/images/" . $row["cd_img_livro"];
+                $texto .= "<div class='livro'>";
+				$texto.= "<img src='".$caminhoImg."' class='class-item-img' alt='capa do livro ".$row["nm_livro"]."'>";
+				$texto .= "<div class='tituloLivro'><span>"; 
+				$texto .= "<a href='#'>".$row["nm_livro"]."</a>";
+				$texto .= "</span></div>";
+				$texto .= "<div class='autorLivro'><span>"; 
+				$texto .= "<a href='#'>".$row["nm_autor"]."</a>";
+				$texto .= "</span></div></div>";
+			}
+			return $texto;
+		}
+		$this->conexao->Desconectar();
+    }
+
 	public function selectLivroByAutor($id) {
         $banco = $this->conexao->getBanco();
 		$comando = "SELECT * from livro ";
@@ -137,7 +162,7 @@ class clsLivro extends clsBanco
 				$texto .= "<a href='#'>".$row["nm_livro"]."</a>";
 				$texto .= "</span></div>";
 				$texto .= "<div class='editarLivro'><span>"; 
-				$texto .= "<a href='editar.php?id=".$row["cd_livro"]."' class='ed'><i class='fa-solid fa-pen-to-square'></i>Editar</a>";
+				$texto .= "<a href='editarLivro.php?id=".$row["cd_livro"]."' class='ed'><i class='fa-solid fa-pen-to-square'></i>Editar</a>";
 				$texto .= "</span>";
 				$texto .= "<span>"; 
 				$texto .= "<a href='excluir.php?id=".$row["cd_livro"]."' class='ex'><i class='fa-solid fa-trash'></i>Excluir</a>";
@@ -176,17 +201,17 @@ class clsLivro extends clsBanco
 		$banco = $this->conexao->getBanco();
 		$comando = "update livro set ";
 		$comando .= "nm_livro = '".$this->get_nm_livro()."', ";
+		$comando .= "cd_categoria = ".$this->get_cd_categoria().", ";
         $comando .= "ds_livro = '".$this->get_ds_livro()."', ";
 		$comando .= "dt_lancamento = '".$this->get_dt_lancamento()."', ";
-        $comando .= "vl_livro = '".$this->get_vl_livro()."', ";
-		$comando .= "cd_img_livro = '".$this->get_cd_img_livro()."', ";
-		$comando .= "where cd_livro = '".$id."'";
+		$comando .= "cd_img_livro = '".$this->get_cd_img_livro()."' ";
+		$comando .= "where cd_livro = ".$id."";
 
 		if($banco->query($comando) == true) {
-			// header("location:index.php");
+			header("location:homeAutor.php");
 		}
 		else {
-			return "erro";
+			return mysqli_error($banco) . "<br>" . $comando;
 		}
 	}
 
