@@ -163,7 +163,7 @@ class clsLivro extends clsBanco
 		)";
 
 		if($banco->query($comando) == true) {
-			return "Cadastrado!";
+			header("location: homeAutor.php");
 		}
 		else {
 			return "Erro!";

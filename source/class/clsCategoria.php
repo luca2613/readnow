@@ -46,7 +46,7 @@ class clsCategoria extends clsBanco
 		$comando = "SELECT * FROM categoria";
 		$resultado = $banco->query($comando);
 		if($resultado->num_rows > 0) {
-			$texto = "<select>";
+			$texto = "<select name='nm_categoria' id='nm_categoria'>";
 			while($row = $resultado->fetch_assoc()) {
 				$texto .= "<option value=".$row["cd_categoria"].">". $row["nm_categoria"] ."</option>";
 			}

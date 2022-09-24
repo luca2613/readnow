@@ -29,7 +29,7 @@ $livro = new clsLivro($classe_banco);
                 <div class="tituloPagina"><h1>Meus livros</h1></div>
                 <div class="btnCadastro"><button id="btnCadastro1" onclick="muda('formulario')"><i class="fa-solid fa-circle-plus"></i>Cadastrar</button></div>
             </div>
-            <form id="formulario" method="post" action="cadastro.php">
+            <form id="formulario" method="post" action="cadastro.php" enctype="multipart/form-data">
                 <section class="base df dc">
                     <div class="df jst">
                         <div class="df dc width1">
@@ -51,7 +51,7 @@ $livro = new clsLivro($classe_banco);
                             <label for="ds_livro">Descrição do livro</label>
                             <input type="text" name="ds_livro" id="ds_livro">
                             
-                            <label for="nm_categoria">Categoria do livro</label>
+                            <label for="cd_categoria">Categoria do livro</label>
                             <?php echo $categoria->selectCategoria(); ?>
 
                             <label for="dt_lancamento">Data de lançamento</label>
@@ -61,6 +61,7 @@ $livro = new clsLivro($classe_banco);
                     
                     <input type="submit" class="btn_confirmar" value="Confirmar">
                     <div id="resultado"></div>
+                    
 
                 </section>
             </form>
@@ -72,6 +73,6 @@ $livro = new clsLivro($classe_banco);
         </div>
     </section>
     <script src="../../assets/js/home.js"></script>
-    <script src="../../assets/js/formulario.js"></script>
+    <!-- <script src="../../assets/js/formulario.js"></script> -->
 </body>
 </html>
