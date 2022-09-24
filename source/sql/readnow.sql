@@ -84,19 +84,13 @@ insert into tipo_usuario values
 (default, 'cliente');
 
 insert into autor values
-(default,2,'autor1','autor 1, nascido em tal',md5('123'),'autor@gmail.com', 'img');
+(default,2,'autor1','autor 1, nascido em tal',md5('123'),'autor@gmail.com', 'imgAutor1.jpg');
 
 insert into usuario values
 (default,3,'usuario', md5('123'),'usuario@gmail.com');
 
 insert into autor values
 (default,2,'autor2','autor 1, nascido em tal',md5('123'),'autor2@gmail.com', 'img');
-
-desc usuario;
-
-select * from autor;
-
-SELECT * FROM autor where nm_email_autor = "autor@gmail.com" and nm_senha_autor = md5("123");
 
 insert into livro values
 (default, 1, 1, "Harry Potter e o prisioneiro de azkaban", "ivro harry potter...", '2022-09-21',10.90,'livro1.jpg');
@@ -110,7 +104,8 @@ insert into livro values
 insert into livro values
 (default,4, 1, "O labirinto do fauno", "ivro harry potter...", '2022-09-22',10.90,'livro4.jpg');
 
-select nm_autor,cd_livro,cd_img_livro,nm_livro,dt_lancamento from livro join autor on livro.cd_autor = autor.cd_autor order by dt_lancamento desc limit 4;
+insert into livro(cd_livro,cd_categoria,cd_autor,nm_livro,ds_livro,dt_lancamento,cd_img_livro) values
+(default,4, 1, "O labirinto do fauno2", "ivro harry potter...2", '2022-09-12','livro4.jpg');
 
-select * from livro order by dt_lancamento desc limit 3;
+
 

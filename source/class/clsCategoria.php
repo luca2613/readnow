@@ -41,6 +41,21 @@ class clsCategoria extends clsBanco
 		
 	}
 
+	public function selectCategoria() {
+		$banco = $this->conexao->getBanco();
+		$comando = "SELECT * FROM categoria";
+		$resultado = $banco->query($comando);
+		if($resultado->num_rows > 0) {
+			$texto = "<select>";
+			while($row = $resultado->fetch_assoc()) {
+				$texto .= "<option value=".$row["cd_categoria"].">". $row["nm_categoria"] ."</option>";
+			}
+			$texto.= "</select>";
+            return $texto;
+		}
+		$this->conexao->Desconectar();
+	}
+
 }
 
 ?>

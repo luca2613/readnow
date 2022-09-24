@@ -4,6 +4,7 @@ class clsLivro extends clsBanco
 	private $conexao;
 	private $cd_livro;
     private $cd_autor;
+	private $cd_categoria;
 	private $nm_livro;
 	private $ds_livro;
 	private $dt_lancamento;
@@ -24,6 +25,14 @@ class clsLivro extends clsBanco
 	
     public function set_cd_autor($cd_autor) {
 		$this->cd_autor = $cd_autor;
+	}
+
+	public function get_cd_categoria() {
+		return $this->cd_categoria;
+	}
+	
+    public function set_cd_categoria($cd_categoria) {
+		$this->cd_categoria = $cd_categoria;
 	}
 
     public function get_nm_livro() {
@@ -111,16 +120,45 @@ class clsLivro extends clsBanco
 		$this->conexao->Desconectar();
     }
 
+	public function selectLivroByAutor($id) {
+        $banco = $this->conexao->getBanco();
+		$comando = "SELECT * from livro ";
+		$comando .= "WHERE cd_autor = '".$id."'";
+		$comando .= "order by dt_lancamento desc";
+		$resultado = $banco->query($comando);
+		$texto = "";
+		
+		if($resultado->num_rows > 0) {
+			while($row = $resultado->fetch_assoc()) {
+				$caminhoImg = "../../assets/images/" . $row["cd_img_livro"];
+                $texto .= "<div class='livro'>";
+				$texto.= "<img src='".$caminhoImg."' class='class-item-img' alt='capa do livro ".$row["nm_livro"]."'>";
+				$texto .= "<div class='tituloLivro'><span>"; 
+				$texto .= "<a href='#'>".$row["nm_livro"]."</a>";
+				$texto .= "</span></div>";
+				$texto .= "<div class='editarLivro'><span>"; 
+				$texto .= "<a href='editar.php?id=".$row["cd_livro"]."' class='ed'><i class='fa-solid fa-pen-to-square'></i>Editar</a>";
+				$texto .= "</span>";
+				$texto .= "<span>"; 
+				$texto .= "<a href='excluir.php?id=".$row["cd_livro"]."' class='ex'><i class='fa-solid fa-trash'></i>Excluir</a>";
+				$texto .= "</span></div>";
+				$texto .= "</div>";
+			}
+			return $texto;
+		}
+		$this->conexao->Desconectar();
+    }
+
 	public function insertLivro() {
 		$banco = $this->conexao->getBanco();
-		$comando = "insert livro produto values 
+		$comando = "INSERT INTO livro(cd_livro,cd_categoria,cd_autor,nm_livro,ds_livro,dt_lancamento,cd_img_livro) values 
 		(
 		'".$this->get_cd_livro()."',
-        '".$this->get_cd_autor()."',
+		'".$this->get_cd_categoria()."',
+		'".$this->get_cd_autor()."',
 		'".$this->get_nm_livro()."',
         '".$this->get_ds_livro()."',
         '".$this->get_dt_lancamento()."',
-        '".$this->get_vl_livro()."',
 		'".$this->get_cd_img_livro()."'
 		)";
 
@@ -157,7 +195,7 @@ class clsLivro extends clsBanco
 		$comando = "delete from livro where ";
 		$comando .= "cd_livro = '".$id."'";
 		if($banco->query($comando) == true) {
-			header("location:index.php");
+			header("location:homeAutor.php");
 		}
 	}
 }

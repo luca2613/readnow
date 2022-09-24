@@ -106,20 +106,37 @@ class clsAutor extends clsBanco
         }
     }
 
-	public function menuCategoria() {
+	public function menuLateral($id) {
 		$banco = $this->conexao->getBanco();
-		$comando = "select * from categoria";
+		$comando = "SELECT nm_autor,cd_img_autor ";
+		$comando .= "FROM autor ";
+		$comando .= "WHERE cd_autor = '".$id."'"; 
 		$resultado = $banco->query($comando);
 		$texto = "";
 		if($resultado->num_rows > 0) {
-			while($row = $resultado->fetch_assoc()) {
-                $texto .= "<li id='".$row["cd_categoria"]."'><a href='#'>" . $row["nm_categoria"] . "</a></li>";
-			}
+			$row = $resultado->fetch_assoc();
+			$caminhoImg = "../../assets/images/" . $row["cd_img_autor"];
+			$texto .= '<div class="menuLateral">';
+            $texto .= '<div class="topo">';
+			$texto .= "<img src='".$caminhoImg."' alt='foto do(a) ".$row["nm_autor"]."'>";
+            $texto .= "<div class='nomeAutor'>".$row["nm_autor"]."</div>";
+            $texto .= "</div>";
+            $texto .= "<div class='listaMenu'>";
+            $texto .= "<ul>";
+            $texto .= "<li>";
+            $texto .= "<a href='#'><i class='fa-solid fa-book'></i>Meus livros</a>";
+            $texto .="</li>";
+        	$texto .= "<li>";
+            $texto .= "<a href='#'><i class='fa-solid fa-user'></i>Minha conta</a>";
+            $texto .= "</li>";
+        	$texto .= "</ul>";
+            $texto .= "</div>";
+            $texto .= "<div class='sairLateral'><a href='sair.php'><i class='fa-solid fa-right-from-bracket'></i>Sair</a></div>";
+        	$texto .= "</div>";
 			return $texto;
 		}
 		$this->conexao->Desconectar();
 	}
-
 }
 
 ?>

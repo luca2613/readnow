@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Calibri';
+}
+
+main {
+    width: 100%;   
+}
+
+.menuLateral {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background-color: #161616; 
+    height: 100vh;
+    align-items: center; 
+    position: fixed;
+}
+
+.topo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px 0px 20px 0px;
+}
+
+.nomeAutor {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.listaMenu {
+    margin-top: 20px;
+    width: 90%;
+    display: flex;
+    justify-content:center;
+}
+
+.listaMenu i {
+    margin-right: 15px;
+}
+
+.listaMenu ul li {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.listaMenu ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white
+}
+
+.sairLateral {
+    width: 90%;
+    height: 40%;
+    justify-content: center;
+    display: flex;
+    align-items: end;
+
+}
+
+.sairLateral a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white
+}
+
+.sairLateral     i {
+    margin-right: 15px;
+}
