@@ -120,9 +120,6 @@ if(isset($_POST["nm_categoria"])) {
 		
 	}
 }
-// echo "<br>" . $nm_categoria;
-// echo "<br>" . $nm_livro;
-// echo "<br>" . $ds_livro;
 
 if (isset($_FILES['upfile'])) {
 	if(!empty($_FILES["upfile"])) {
