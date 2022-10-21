@@ -93,7 +93,9 @@ insert into autor values
 (default,2,'autor2','autor 1, nascido em tal',md5('123'),'autor2@gmail.com', 'img');
 
 insert into livro values
-(default, 1, 1, "Harry Potter e o prisioneiro de azkaban", "ivro harry potter...", '2022-09-30',10.90,'livro1.jpg');
+(default, 1, 1, "Harry Potter e o prisioneiro de azkaban", "O PHP está passando por um renascimento, embora possa ser difícil perceber, com tantos tutoriais PHP online desatualizados. Com este guia prático, você verá como o PHP se tornou uma linguagem cheia de recursos e madura, orientada a objetos, com namespaces e uma coleção crescente de bibliotecas de componentes reutilizáveis.
+
+O autor Josh Lockhart – criador do PHP The Right Way, uma iniciativa popular para incentivar as melhores práticas associadas ao PHP – mostra os recursos dessa nova linguagem em ação. Você conhecerá as melhores práticas para a arquitetura e o planejamento de aplicações, bancos de dados, segurança, testes, debugging e implantação. Se tiver uma compreensão básica de PHP e quiser aperfeiçoar suas habilidades, este livro foi escrito para você.", '2022-09-30',10.90,'livro1.jpg');
 
 insert into livro values
 (default,2,  2, "Jogos Vorazes", "ivro harry potter...", '2022-09-29',10.90,'livro2.jpg');
@@ -109,6 +111,8 @@ insert into livro values
 
 insert into livro(cd_livro,cd_categoria,cd_autor,nm_livro,ds_livro,dt_lancamento,cd_img_livro) values
 (default,4, 1, "O labirinto do fauno2", "ivro harry potter...2", '2022-09-12','livro4.jpg');
+
+select * from livro;
 
 
 

@@ -137,6 +137,30 @@ class clsAutor extends clsBanco
 		}
 		$this->conexao->Desconectar();
 	}
+
+	public function selectAutorById($id) {
+        $banco = $this->conexao->getBanco();
+		$comando = "SELECT nm_autor, ds_autor ";
+		$comando .= "FROM autor ";
+		$comando .= "WHERE cd_autor = '".$id."'";
+		$resultado = $banco->query($comando);
+		$texto = "";
+		
+		if($resultado->num_rows > 0) {
+			while($row = $resultado->fetch_assoc()) {
+				$caminhoImg = "../../assets/images/" . $row["cd_img_autor"];
+				$texto .= "<div class='info-livro'>";
+				$texto.= "<img src='".$caminhoImg."' alt='capa do livro ".$row["nm_livro"]."'>";
+				$texto .= "</div>";
+				$texto .= "<div class='info-livro'>";
+				$texto .= "<h1>".$row["nm_autor"]."</h1>";
+				$texto .= "<p>".$row["ds_autor"]."</p>";
+				$texto .= "</div>";
+			}
+			return $texto;
+		}
+		$this->conexao->Desconectar();
+    }
 }
 
 ?>

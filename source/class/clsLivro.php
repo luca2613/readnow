@@ -107,9 +107,11 @@ class clsLivro extends clsBanco
 			while($row = $resultado->fetch_assoc()) {
 				$caminhoImg = "../assets/images/" . $row["cd_img_livro"];
                 $texto .= "<div class='livro'>";
+				$texto .= "<a href='../layout/pages/livro.php?id=".$row["cd_livro"]."'>";
 				$texto.= "<img src='".$caminhoImg."' class='class-item-img' alt='capa do livro ".$row["nm_livro"]."'>";
+				$texto .= "</a>";
 				$texto .= "<div class='tituloLivro'><span>"; 
-				$texto .= "<a href='#'>".$row["nm_livro"]."</a>";
+				$texto .= "<a href='../layout/pages/livro.php?id=".$row["cd_livro"]."'>".$row["nm_livro"]."</a>";
 				$texto .= "</span></div>";
 				$texto .= "<div class='autorLivro'><span>"; 
 				$texto .= "<a href='#'>".$row["nm_autor"]."</a>";
@@ -120,19 +122,21 @@ class clsLivro extends clsBanco
 		$this->conexao->Desconectar();
     }
 
-	public function selectLivroByBusca($campo) {
+	public function selectLivroByBusca($busca) {
         $banco = $this->conexao->getBanco();
 		$comando = "SELECT nm_autor,cd_livro,cd_img_livro,nm_livro,dt_lancamento FROM ";
 		$comando .= "livro join autor on livro.cd_autor = autor.cd_autor where ";
-		$comando .= "nm_autor like '%$campo%' or nm_livro like '%$campo%';";
+		$comando .= "nm_autor like '%$busca%' or nm_livro like '%$busca%';";
 		$resultado = $banco->query($comando);
 		$texto = "";
 		
 		if($resultado->num_rows > 0) {
 			while($row = $resultado->fetch_assoc()) {
-				$caminhoImg = "../assets/images/" . $row["cd_img_livro"];
+				$caminhoImg = "../../assets/images/" . $row["cd_img_livro"];
                 $texto .= "<div class='livro'>";
+				$texto .= "<a href='livro.php?id=".$row["cd_livro"]."'>";
 				$texto.= "<img src='".$caminhoImg."' class='class-item-img' alt='capa do livro ".$row["nm_livro"]."'>";
+				$texto .= "</a>";
 				$texto .= "<div class='tituloLivro'><span>"; 
 				$texto .= "<a href='#'>".$row["nm_livro"]."</a>";
 				$texto .= "</span></div>";
@@ -167,6 +171,31 @@ class clsLivro extends clsBanco
 				$texto .= "<span>"; 
 				$texto .= "<a href='excluir.php?id=".$row["cd_livro"]."' class='ex'><i class='fa-solid fa-trash'></i>Excluir</a>";
 				$texto .= "</span></div>";
+				$texto .= "</div>";
+			}
+			return $texto;
+		}
+		$this->conexao->Desconectar();
+    }
+
+	public function selectLivroById($id) {
+        $banco = $this->conexao->getBanco();
+		$comando = "SELECT nm_autor,cd_livro,cd_categoria,cd_img_livro,nm_livro,ds_livro,dt_lancamento ";
+		$comando .= "FROM livro JOIN autor ON livro.cd_autor = autor.cd_autor ";
+		$comando .= "WHERE cd_livro = '".$id."'";
+		$resultado = $banco->query($comando);
+		$texto = "";
+		
+		if($resultado->num_rows > 0) {
+			while($row = $resultado->fetch_assoc()) {
+				$caminhoImg = "../../assets/images/" . $row["cd_img_livro"];
+				$texto .= "<div class='info-livro'>";
+				$texto.= "<img src='".$caminhoImg."' alt='capa do livro ".$row["nm_livro"]."'>";
+				$texto .= "</div>";
+				$texto .= "<div class='info-livro'>";
+				$texto .= "<h1>".$row["nm_livro"]."</h1>";
+				$texto .= "<h2>".$row["nm_autor"]."</h2>";
+				$texto .= "<p>".$row["ds_livro"]."</p>";
 				$texto .= "</div>";
 			}
 			return $texto;
