@@ -3,7 +3,7 @@
         <div class="doubleContainer">
             <div class="containerLogo">LOGO</div>
             <div class="containerBusca">
-                <form method="GET" action="busca.php">
+                <form method="GET" action="../../layout/pages/busca.php">
                     <input type="text" id="busca" name="busca" placeholder="Busque por um título ou autor">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>

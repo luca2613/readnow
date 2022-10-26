@@ -16,6 +16,7 @@ cd_tipo_usuario int not null,
 nm_usuario varchar (80) not null,
 nm_senha_usuario varchar(80) not null,
 nm_email_usuario varchar(150) not null,
+--  verkey
 CONSTRAINT pk_usuario PRIMARY KEY(cd_usuario),
 CONSTRAINT fk_usuario_tipo_usuario FOREIGN KEY usuario(cd_tipo_usuario) REFERENCES tipo_usuario(cd_tipo_usuario)
 );
